@@ -59,6 +59,18 @@ namespace Docnesia.Tests
             spec.MarkValid();
             Assert.DoesNotThrow(spec.Verify);
         }
+        
+        [Test]
+        public void Should_find_type_only_once()
+        {
+            var spec = BuildSpec();
+            var workspace = MSBuildWorkspace.Create();
+            var solution = workspace.OpenSolutionAsync(spec.Solution).Result;
+            var projects = solution.Projects
+                .Select(s => s.GetCompilationAsync().Result)
+                .ToList();
+            Assert.True(projects[0].GetTypeByMetadataName(typeof(Docnesia).FullName));
+        }
 
         private string BuildSnapshot(Specification spec)
         {
