@@ -63,8 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeSnapshot.cs" />
     <Compile Include="Docnesia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
